@@ -7,10 +7,10 @@ Get current build status of a repo on circleci from CLI
 * pip3 is required: `sudo apt install python3-pip`
 * Clone the repo `git clone https://github.com/kostyay/circlecistatus.git`
 * `apt-get install libgit2-dev`
-* `pip3 install -r requirements.txt`ç
+* `pip3 install -r requirements.txt`
 * Create an alias in your `.bashrc`: `alias bs=/path/to/build_status.py`.
-** bash: `echo alias bs=`pwd`/build_status.py >> ~/.bashrc`
-** zsh: `echo alias bs=`pwd`/build_status.py >> ~/.zshrc`
+  * bash: ```echo alias bs=`pwd`/build_status.py >> ~/.bashrc```
+  * zsh: ```echo alias bs=`pwd`/build_status.py >> ~/.zshrc```
 * Run `bs` from project directory to get the current build status
 
 # Usage
