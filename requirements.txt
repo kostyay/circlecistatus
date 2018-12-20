@@ -1,1 +1,2 @@
-pygit2==0.27.2
+pygit2==0.26.0
+colorama==0.4.1

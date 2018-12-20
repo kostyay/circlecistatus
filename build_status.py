@@ -6,6 +6,8 @@ import sys
 import json
 import os
 import configparser
+from colorama import init
+from colorama import Fore, Back, Style
 
 
 CONFIG_PATH="~/.circleci/build_status"
@@ -56,8 +58,9 @@ def get_builds(project, branch):
 	targetObj = result[0]
 	print("Build Name: {0}".format(targetObj["subject"]))
 	print ("Build URL: {0}".format(targetObj["build_url"]))
-	print ("Build Status: {0}".format(targetObj["status"]))
-	print ("Workflow: {0}".format(targetObj["workflows"]["job_name"]))
+	print (Back.GREEN + Fore.BLACK + "Build Status: {0}".format(targetObj["status"]) + Style.RESET_ALL)
+	if targetObj["status"] != "success":
+		print ("Workflow: {0}".format(targetObj["workflows"]["job_name"]))
 
 def main():
 	global config_params
@@ -76,4 +79,5 @@ def main():
 	return 0
 
 if __name__ == "__main__":
+	init()
 	sys.exit(main())
