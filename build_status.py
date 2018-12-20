@@ -70,6 +70,9 @@ def get_builds(project, branch):
 	if targetObj["status"] != "success":
 		print ("Workflow: {0}".format(targetObj["workflows"]["job_name"]))
 
+def error_message(txt):
+	print("{0}Error{1}: {2}".format(Fore.RED, Style.RESET_ALL, txt))
+
 def main():
 	global config_params
 	try:
@@ -80,10 +83,18 @@ def main():
 	config_params = load_config()
 
 	proj_name = os.path.basename(path)
-	r = pygit2.Repository('.')
-	branch = r.head.shorthand
+	try:
+		r = pygit2.Repository('.')
+		branch = r.head.shorthand
+	except:
+		error_message("The script must be executed inside a git repository that is linked to circleci. No git repo was detected in {0}".format(os.getcwd()))
+		return 1
 
-	get_builds(proj_name, branch)
+	try:
+		get_builds(proj_name, branch)
+	except:
+		error_message("Failed fetching build status from circleci")
+		
 	return 0
 
 if __name__ == "__main__":
