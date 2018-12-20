@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 import pygit2
 from urllib.request import urlopen, Request
@@ -58,7 +58,15 @@ def get_builds(project, branch):
 	targetObj = result[0]
 	print("Build Name: {0}".format(targetObj["subject"]))
 	print ("Build URL: {0}".format(targetObj["build_url"]))
-	print (Back.GREEN + Fore.BLACK + "Build Status: {0}".format(targetObj["status"]) + Style.RESET_ALL)
+	build_status = targetObj["status"]
+	if build_status == "failed":
+		color = Back.RED + Fore.BLACK
+	elif build_status == "running":
+		color = Back.BLUE + Fore.BLACK
+	else:
+		color = Back.GREEN + Fore.BLACK
+
+	print (color + "Build Status: {0}".format(targetObj["status"]) + Style.RESET_ALL)
 	if targetObj["status"] != "success":
 		print ("Workflow: {0}".format(targetObj["workflows"]["job_name"]))
 
