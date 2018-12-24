@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/kostyay/circlecistatus.svg?branch=master)](https://travis-ci.org/kostyay/circlecistatus)
 # circlecistatus
 Get current build status of a repo on circleci from CLI
 

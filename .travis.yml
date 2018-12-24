@@ -1,0 +1,20 @@
+language: minimal
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - IMAGE_NAME=kostyay/circlestatus
+script:
+  - docker build --pull --tag "$IMAGE_NAME" .     
+after_script:
+  - docker images
+before_deploy:
+  - echo "Setup dockerhub"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin  
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest"
+  on:
+    branch: master

@@ -84,7 +84,7 @@ def main():
 
 	proj_name = os.path.basename(path)
 	try:
-		r = pygit2.Repository('.')
+		r = pygit2.Repository(path)
 		branch = r.head.shorthand
 	except:
 		error_message("The script must be executed inside a git repository that is linked to circleci. No git repo was detected in {0}".format(os.getcwd()))
