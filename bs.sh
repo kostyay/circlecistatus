@@ -17,3 +17,4 @@ fi
 
 echo docker run --env HOME=$HOME -v $HOME:$HOME -v `pwd`:`pwd` $docker_image $target_dir
 docker run --env HOME=$HOME -v $HOME:$HOME -v `pwd`:`pwd` $docker_image $target_dir
+

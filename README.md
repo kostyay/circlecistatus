@@ -2,7 +2,14 @@
 # circlecistatus
 Get current build status of a repo on circleci from CLI
 
-# Installation 
+# Usage with docker
+* `git clone https://github.com/kostyay/circlecistatus.git`
+* `cd circlecistatus`
+* ```echo alias bs=`pwd`/bs.sh >> ~/.zshrc```
+* Follow configuration guide explained in [Configuration](#Configuration)
+* Run `bs` from project directory to get the current build status
+
+# Installation with source
 * Python3 is required
 * pip3 is required: `sudo apt install python3-pip`
 * Clone the repo `git clone https://github.com/kostyay/circlecistatus.git`
@@ -22,7 +29,7 @@ pip3 install -r requirements.txt
 echo alias bs=`pwd`/build_status.py >> ~/.bashrc
 ```
 
-# Usage
+# Configuration
 Create a configuration file at the following path: `~/.circleci/build_status`
 It should contain the following contents:
 ```
