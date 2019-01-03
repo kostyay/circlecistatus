@@ -3,9 +3,10 @@
 Get current build status of a repo on circleci from CLI
 
 # Usage with docker
-* `git clone https://github.com/kostyay/circlecistatus.git`
-* `cd circlecistatus`
-* ```echo alias bs=`pwd`/bs.sh >> ~/.zshrc```
+```
+curl https://raw.githubusercontent.com/kostyay/circlecistatus/master/bs.sh -o bs.sh && chmod +x ./bs.sh
+echo alias bs=`pwd`/build_status.py >> ~/.bashrc
+```
 * Follow configuration guide explained in [Configuration](#Configuration)
 * Run `bs` from project directory to get the current build status
 

@@ -15,6 +15,5 @@ if [ ! -z "$1" ]; then
 	target_dir=$1
 fi
 
-echo docker run --env HOME=$HOME -v $HOME:$HOME -v `pwd`:`pwd` $docker_image $target_dir
-docker run --env HOME=$HOME -v $HOME:$HOME -v `pwd`:`pwd` $docker_image $target_dir
+docker run --rm --env HOME=$HOME -v $HOME:$HOME -v `pwd`:`pwd` $docker_image $target_dir
 
